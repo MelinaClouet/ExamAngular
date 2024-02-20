@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+input{
+  @apply rounded-md border-gray-50 border-2 ;
+}
+textarea{
+  @apply rounded-md border-dotted border-2 border-gray-600;
+}
+
+.custom-label {
+  @apply font-bold uppercase;
+}
+
+.btnCalculatriceNbr{
+  @apply rounded bg-gray-300 text-gray-600 w-[136px] h-[40px] mx-3 my-3;
+}
+
+.btnCalculatriceSigne{
+  @apply rounded bg-gray-100 text-gray-600 w-[136px] h-[40px] mx-3 my-3;
+}
+
+.btnCalculatriceAdd{
+  @apply rounded bg-orange-400 text-gray-600 w-[136px] h-[40px] mx-3 my-3;
+}
+
+
