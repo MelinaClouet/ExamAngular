@@ -23,6 +23,7 @@ export class AppComponent {
   tabItems: Item[] = [];
   unite='';
   view:string="";
+  currentId:number|null=null;
 
 
   @HostListener('window:resize', ['$event'])
@@ -171,18 +172,29 @@ export class AppComponent {
     }
 
     let object = {
-      id: Math.random().toString(36).substr(2, 9),
+      id: Math.random(),
       produit: this.produit,
       quantite: this.result,
+      calc:this.input,
       unite: this.unite
     }
-    this.tabItems.push(object);
+    if(!this.currentId) {
+      this.tabItems.push(object);
+      console.log(this.tabItems);
+    }
+    else{
+      let index=this.tabItems.findIndex(e=>e.id==this.currentId);
+      this.tabItems[index]=object;
+      this.currentId=null;
+    }
+
     localStorage.setItem("inventaire", JSON.stringify(this.tabItems));
-    console.log(this.tabItems);
 
   }
 
   update(item: Item){
+    this.currentId=item.id;
+
     this.result=item.quantite;
     this.produit=item.produit;
     switch (item.unite) {
@@ -202,6 +214,8 @@ export class AppComponent {
         this.unite="5";
         break;
     }
+
+
 
 
   }
