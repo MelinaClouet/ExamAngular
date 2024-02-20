@@ -27,7 +27,7 @@ textarea{
 }
 
 .btnMobile{
-  @apply rounded bg-gray-300 text-gray-600 h-[40px] mx-3 my-3;
+  @apply rounded bg-gray-300 text-gray-600 h-[40px] mx-3 my-3 shadow-lg;
 }
 
 .btnStatic{

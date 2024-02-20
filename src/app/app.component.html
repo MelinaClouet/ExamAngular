@@ -1,70 +1,70 @@
 <div class="flex flex-col md:flex-row">
-  <div class="h-screen md:w-1/2 " [ngClass]="{'hidden': view=='inventaire'}">
+  <div class="h-screen md:w-1/2 mx-2" [ngClass]="{'hidden': view=='inventaire'}">
+  <div class="flex flex-wrap items-center justify-center mt-10">
+      <div class="w-full md:w-[70%]">
+        <div class="flex flex-row">
+          <button class="btnMobile w-1/2 md:hidden" (click)="changeViewCalculator()" >Saisie</button>
+          <button class="btnMobile w-1/2 md:hidden" (click)="changeViewInventory()" >Inventaire</button>
 
-    <div class="border-solid border-2 border-balck-200 w-full md:w-[100%] mx-2 my-2">
-      <div class="flex flex-row">
-        <button class="btnMobile w-1/2 md:hidden" (click)="changeViewSaisie()" >Saisie</button>
-        <button class="btnMobile w-1/2 md:hidden" (click)="changeViewInventaire()" >Inventaire</button>
-
+        </div>
+        <div class="my-2 mx-2">
+          <input class="w-full text-right bg-gray-50" type="text" placeholder="Nom du produit" [(ngModel)]="produit">
+        </div>
+        <div class="mx-2">
+          <input class="w-full text-right bg-gray-50" type="text" placeholder="12*5+3" [(ngModel)]="input">
+        </div>
+        <div class="flex flex-row mx-2 my-2">
+          <input class="w-2/3 mr-0.5 text-right bg-gray-50" type="text" placeholder="63"[(ngModel)]="result">
+          <select class="w-1/3 ml-0.5 bg-gray-50" [(ngModel)]="unite">
+            <option value="1">m²</option>
+            <option value="2">ml</option>
+            <option value="3">m³</option>
+            <option value="4">u</option>
+            <option value="5">l</option>
+          </select>
+        </div>
       </div>
-      <div class="my-2 mx-2">
-        <input class="w-full text-right" type="text" placeholder="Nom du produit" [(ngModel)]="produit">
+      <div class="flex flex-row md:w-[70%]">
+        <button class="btnCalculatriceSigne" >(</button>
+        <button class="btnCalculatriceSigne" >)</button>
+        <button class="btnCalculatriceSigne" (click)="allClear()">AC</button>
+        <button class="btnCalculatriceAdd" (click)="pressOperator('%')" >%</button>
       </div>
-      <div class="mx-2">
-        <input class="w-full text-right" type="text" placeholder="12*5+3" [(ngModel)]="input">
+      <div class="flex flex-row md:w-[70%]">
+        <button class="btnCalculatriceNbr" (click)="pressNum('7')" >7</button>
+        <button class="btnCalculatriceNbr" (click)="pressNum('8')" >8</button>
+        <button class="btnCalculatriceNbr" (click)="pressNum('9')" >9</button>
+        <button class="btnCalculatriceAdd" (click)="pressOperator('*')" >*</button>
       </div>
-      <div class="flex flex-row mx-2 my-2">
-        <input class="w-2/3 mr-0.5 text-right" type="text" placeholder="63"[(ngModel)]="result">
-        <select class="w-1/3 ml-0.5" [(ngModel)]="unite">
-          <option value="1">m²</option>
-          <option value="2">ml</option>
-          <option value="3">m³</option>
-          <option value="4">u</option>
-          <option value="5">l</option>
-        </select>
+      <div class="flex flex-row md:w-[70%]">
+        <button class="btnCalculatriceNbr" (click)="pressNum('4')" >4</button>
+        <button class="btnCalculatriceNbr" (click)="pressNum('5')" >5</button>
+        <button class="btnCalculatriceNbr" (click)="pressNum('6')">6</button>
+        <button class="btnCalculatriceAdd" (click)="pressOperator('-')" >-</button>
       </div>
-    </div>
-    <div class="flex flex-row">
-      <button class="btnCalculatriceSigne" >(</button>
-      <button class="btnCalculatriceSigne" >)</button>
-      <button class="btnCalculatriceSigne" (click)="allClear()">AC</button>
-      <button class="btnCalculatriceAdd" (click)="pressOperator('%')" >%</button>
-    </div>
-    <div class="flex flex-row">
-      <button class="btnCalculatriceNbr" (click)="pressNum('7')" >7</button>
-      <button class="btnCalculatriceNbr" (click)="pressNum('8')" >8</button>
-      <button class="btnCalculatriceNbr" (click)="pressNum('9')" >9</button>
-      <button class="btnCalculatriceAdd" (click)="pressOperator('*')" >*</button>
-    </div>
-    <div class="flex flex-row">
-      <button class="btnCalculatriceNbr" (click)="pressNum('4')" >4</button>
-      <button class="btnCalculatriceNbr" (click)="pressNum('5')" >5</button>
-      <button class="btnCalculatriceNbr" (click)="pressNum('6')">6</button>
-      <button class="btnCalculatriceAdd" (click)="pressOperator('-')" >-</button>
-    </div>
-    <div class="flex flex-row">
-      <button class="btnCalculatriceNbr" (click)="pressNum('1')" >1</button>
-      <button class="btnCalculatriceNbr" (click)="pressNum('2')" >2</button>
-      <button class="btnCalculatriceNbr" (click)="pressNum('3')" >3</button>
-      <button class="btnCalculatriceAdd" (click)="pressOperator('+')" >+</button>
-    </div>
-    <div class="flex flex-row">
-      <button class="btnCalculatriceNbr" (click)="pressNum('0')" >0</button>
-      <button class="btnCalculatriceNbr" (click)="pressNum('.')" >,</button>
-      <button class="btnCalculatriceAdd" (click)="getAnswer()" >=</button>
-      <button class="btnCalculatriceSigne" (click)="add()">🔙 </button>
+      <div class="flex flex-row md:w-[70%]">
+        <button class="btnCalculatriceNbr" (click)="pressNum('1')" >1</button>
+        <button class="btnCalculatriceNbr" (click)="pressNum('2')" >2</button>
+        <button class="btnCalculatriceNbr" (click)="pressNum('3')" >3</button>
+        <button class="btnCalculatriceAdd" (click)="pressOperator('+')" >+</button>
+      </div>
+      <div class="flex flex-row md:w-[70%]">
+        <button class="btnCalculatriceNbr" (click)="pressNum('0')" >0</button>
+        <button class="btnCalculatriceNbr" (click)="pressNum('.')" >,</button>
+        <button class="btnCalculatriceAdd" (click)="getAnswer()" >=</button>
+        <button class="btnCalculatriceSigne" (click)="add()">🔙 </button>
+      </div>
     </div>
   </div>
-
-  <div class="flex flex-col mt-2 mx-2 w-screen md:w-1/2" [ngClass]="{'hidden': view=='saisie'}" >
+  <div class="flex flex-col w-screen md:w-1/2" [ngClass]="{'hidden': view=='saisie'}" >
 
     <div class="flex flex-row">
-      <button class="btnMobile w-1/2 md:hidden" (click)="changeViewSaisie()" >Saisie</button>
-      <button class="btnMobile w-1/2 md:hidden" (click)="changeViewInventaire()" >Inventaire</button>
+      <button class="btnMobile w-1/2 md:hidden" (click)="changeViewCalculator()" >Saisie</button>
+      <button class="btnMobile w-1/2 md:hidden" (click)="changeViewInventory()" >Inventaire</button>
     </div>
 
     @for(item of tabItems; track item){
-    <div class="rounded-lg bg-gray-200 p-2 mb-2 w-full mx-2" (click)="update(item)">
+    <div class="rounded-lg bg-white shadow-lg  p-2 mb-2 w-full mx-2" (click)="update(item)">
 
         <strong>{{ item.produit }}</strong>
         <p>Quantité: {{ item.quantite }}</p>

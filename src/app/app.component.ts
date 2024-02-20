@@ -52,11 +52,11 @@ export class AppComponent {
     }
   }
 
-  changeViewInventaire(){
+  changeViewInventory(){
     this.view="inventaire";
   }
 
-  changeViewSaisie(){
+  changeViewCalculator(){
     this.view="saisie";
   }
 
@@ -197,6 +197,7 @@ export class AppComponent {
 
     this.result=item.quantite;
     this.produit=item.produit;
+    this.input=item.calc;
     switch (item.unite) {
       case "m2":
         this.unite="1";
@@ -214,11 +215,8 @@ export class AppComponent {
         this.unite="5";
         break;
     }
-
-
-
-
   }
+
   saveCSV(){
     var options = {
       fieldSeparator: ',',
@@ -256,12 +254,10 @@ export class AppComponent {
     window.document.close();
     window.print();
 
-
-
   }
 
   importCSV(){
-
+    alert("Fonctionnalité en cours de développement");
   }
 
 
