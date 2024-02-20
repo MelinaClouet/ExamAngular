@@ -1,16 +1,31 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import {FormsModule} from "@angular/forms";
+import {Item} from "./interface/donnée.interface";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
+
 export class AppComponent {
   input = '';
   result = '';
+  produit= '';
+  tabItems: Item[] = [];
+  unite='';
+
+  constructor() {
+    if (localStorage.getItem("inventaire")) {
+      this.tabItems = JSON.parse(localStorage.getItem("inventaire") || '{}');
+    }
+
+  }
+
 
   pressNum(num: string) {
 
@@ -34,7 +49,7 @@ export class AppComponent {
     }
 
     this.input = this.input + num
-    this.calcAnswer();
+
 
 
   }
@@ -99,7 +114,41 @@ export class AppComponent {
     this.input = this.result;
     if (this.input=="0") this.input="";
     console.log(this.result);
-    this.allClear();
+
+  }
+
+  displayInventaire(){
+
+  }
+
+  add(){
+
+    switch (this.unite) {
+      case "1":
+        this.unite="m2";
+        break;
+      case "2":
+        this.unite="ml";
+        break;
+      case "3":
+        this.unite="m3";
+        break;
+      case "4":
+        this.unite="U";
+        break;
+      case "5":
+        this.unite="l";
+        break;
+    }
+
+    let object = {
+      produit: this.produit,
+      quantite: this.input,
+      unite: this.unite
+    }
+    this.tabItems.push(object);
+    localStorage.setItem("inventaire", JSON.stringify(this.tabItems));
+    console.log(this.tabItems);
   }
 
 
