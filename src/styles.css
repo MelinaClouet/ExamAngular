@@ -30,3 +30,6 @@ textarea{
   @apply rounded bg-gray-300 text-gray-600 h-[40px] mx-3 my-3;
 }
 
+.btnStatic{
+  @apply rounded border-solid border-0 ;
+}

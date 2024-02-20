@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {FormsModule} from "@angular/forms";
 import {Item} from "./interface/donnée.interface";
+import { ngxCsv } from 'ngx-csv/ngx-csv';
+
+
 
 @Component({
   selector: 'app-root',
@@ -111,7 +114,6 @@ export class AppComponent {
 
   getAnswer() {
     this.calcAnswer();
-    this.input = this.result;
     if (this.input=="0") this.input="";
     console.log(this.result);
 
@@ -151,7 +153,32 @@ export class AppComponent {
     console.log(this.tabItems);
   }
 
+  saveCSV(){
+    var options = {
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      showLabels: true,
+      showTitle: true,
+      title: 'Inventaire',
+      useBom: true,
+      noDownload: false,
+      headers: ["Nom du produit", "Quantité", "Unité"]
+    };
 
+    var csvContent=new ngxCsv(this.tabItems, 'Inventaire',options);
+
+  }
+
+  print(){
+
+
+
+  }
+
+  importCSV(){
+
+  }
 
 
 }
